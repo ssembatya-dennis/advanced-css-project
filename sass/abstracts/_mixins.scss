@@ -5,3 +5,40 @@
         clear: both;
     }
 }
+
+// MEDIA QUERY MANAGER
+
+/*
+0 - 600px       PHONE
+600 - 900px     TABLET PORTRIAT
+900 - 1200px    TABLET LANDSCAPE
+[1200px - 1800px] Is where our normal designs apply
+1800px + -       BIG DESKTOP
+
+$break point argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+Order Base + typography > general layout + grid > page layout > components 
+*/
+ 
+@mixin respond ($break-point) {
+    @if $break-point == phone {
+        @media (max-width: 37.5em) {@content};  //600px  
+    }
+
+    @if $break-point == tab-port {
+        @media (max-width: 56.25em) {@content};  //900px  
+    }
+
+    @if $break-point == tab-land {
+        @media (max-width: 75em) {@content};  //1200px  
+    }
+
+    @if $break-point == big-desktop {
+        @media (min-width: 112.5em) {@content};  //1800px
+    }
+
+}
